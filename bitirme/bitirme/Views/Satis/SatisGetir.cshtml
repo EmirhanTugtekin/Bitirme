@@ -1,0 +1,43 @@
+﻿@model bitirme.Models.Siniflar.SatisHareket
+@{
+    ViewBag.Title = "SatisGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Satış İşlemi Güncelleme Sayfası</h2>
+<br />
+
+@using (Html.BeginForm("SatisGuncelle", "Satis", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.Satisid)@*ürün güncellemede controller a null değer gidip hata vermemesi için bu satırı yazdım*@
+
+    @*virgülden sonraki new ile başlayan kısımlar textbox'a css vermek için*@
+    @Html.LabelFor(x => x.Urun, "Ürün:")
+    @Html.DropDownListFor(x => x.Urunid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    @*virgülden sonraki new ile başlayan kısımlar textbox'a css vermek için*@
+    <br />
+    @Html.Label("Cari:")
+    @Html.DropDownListFor(x => x.Cariid, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Personel, "Personel:")
+    @Html.DropDownListFor(x => x.Personelid, (List<SelectListItem>)ViewBag.dgr3, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.Adet, "Adet:")
+    @Html.TextBoxFor(x => x.Adet, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Fiyat, "Fiyat:")
+    @Html.TextBoxFor(x => x.Fiyat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.ToplamTutar, "Toplam Tutar:")
+    @Html.TextBoxFor(x => x.ToplamTutar, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Tarih, "Tarih:")
+    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+    <br />
+
+
+    <button class="btn btn-warning">Güncelle</button>
+}
+

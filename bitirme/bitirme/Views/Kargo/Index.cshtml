@@ -1,0 +1,49 @@
+﻿@*kargo view sayfası*@
+
+@using bitirme.Models.Siniflar
+
+@*Burada bir model oluşturacağız, bir list oluşturup bu sayfada çağıracağım sınıfı yazıyorum*@
+@model List<KargoDetay>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+@using (Html.BeginForm("Index", "Kargo", FormMethod.Get))
+{
+    <p>
+        Kargo Takip Numarası: @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </p>
+}
+
+<table class="table table-bordered" style="margin-top:20px">
+    <tr>
+
+        <th>PERSONEL</th>
+        <th>ALICI</th>
+        <th>TARİH</th>
+        <th>DETAYLAR</th>
+        <th>TAKİP KODU</th>
+    </tr>
+    @foreach (var k in Model)
+    {
+    <tr>
+
+        <td>@k.Personel</td>
+        <td>@k.Alici</td>
+        <td>@k.Tarih</td>
+
+        <td><a href="/Kargo/KargoTakip/@k.TakipKodu" class="btn btn-danger">Detaylar</a></td>
+        <td>@k.TakipKodu</td>
+    </tr>
+    }
+    @*Bir döngü oluşturdum. Bu döngü k isminde bir değişken içeriyor. Bu k modele bağlı. Model ise kategoriye bağlı. Kategori ise
+        KategoriController tarafındaki metoda bağlı.*@
+</table>
+<br />
+<a href="/Kargo/YeniKargo" class="btn btn-info">Yeni kargo ekle</a>
+<br />
+

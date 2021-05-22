@@ -1,0 +1,32 @@
+﻿@model bitirme.Models.Siniflar.Personel
+@{
+    ViewBag.Title = "PersonelEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yeni Personel Sayfası</h2>
+<br />
+@using (Html.BeginForm("PersonelEkle", "Personel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{@*new ile başlayan kısım bir dosya ekleme komutu*@
+    <form class="form-group" method="post">
+        @Html.LabelFor(x => x.PersonelAd, "Personel Adı:")
+        @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control" })
+        @*virgülden sonraki new ile başlayan kısımlar textbox'a css vermek için*@
+        <br />
+        @Html.LabelFor(x => x.PersonelSoyad, "Personel Soyadı:")
+        @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.PersonelGorsel, "Personel Görseli:")
+        @*@Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control" })*@
+        <input type="file" name="PersonelGorsel" />
+        <br />
+        @Html.LabelFor(x => x.Departman, "Personelin Departmanı:")
+        @Html.DropDownListFor(x => x.Departmanid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+        @*@Html.TextBoxFor(x => x.Kategoriid, new { @class = "form-control" })*@
+        <br />
+
+
+        <button class="btn btn-primary">Kaydet</button>
+    </form>@*post olunca çalışan bir form*@
+}

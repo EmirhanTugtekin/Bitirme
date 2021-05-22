@@ -1,0 +1,18 @@
+﻿@model bitirme.Models.Siniflar.Departman
+@{
+    ViewBag.Title = "DepartmanEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yeni Departman Ekle</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.DepartmanAd, "Departman Adı:")
+    @Html.TextBoxFor(x => x.DepartmanAd, new { @class = "form-control" })
+    @*virgülden sonraki new ile başlayan kısım textbox'a css vermek için*@
+    @*html helper ile label, textbox gibi yapıları kullandım*@
+    <br />
+    <button class="btn btn-info">KAYDET</button>
+</form>
+

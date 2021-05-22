@@ -1,0 +1,40 @@
+﻿@*Personel index sayfası*@
+
+@using bitirme.Models.Siniflar
+@model List<Personel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="margin-top:20px">
+    <tr>
+        <th>ID</th>
+        <th>PERSONEL ADI</th>
+        <th>SOYAD</th>
+        <th>GÖRSEL</th>
+        <th>DEPARTMAN</th>
+        <th>GÜNCELLE</th>
+        <th>SATIŞLAR</th>
+    </tr>
+    @foreach (var k in Model)
+    {
+
+        <tr>
+            <td>@k.Personelid</td>
+            <td>@k.PersonelAd</td>
+            <td>@k.PersonelSoyad</td>
+            <td><img src="@k.PersonelGorsel" style="width:100px; height:80px;" /></td>
+            <td>@k.Departman.DepartmanAd</td>
+
+            <td><a href="/Personel/PersonelGetir/@k.Personelid" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Departman/DepartmanPersonelSatis/@k.Personelid" class="btn btn-default" style="background-color:blue;color:white;">Detaylar</a></td>
+        </tr>
+    }
+    @*Bir döngü oluşturdum. Bu döngü k isminde bir değişken içeriyor. Bu k modele bağlı. Model ise kategoriye bağlı. Kategori ise
+        KategoriController tarafındaki metoda bağlı.*@
+</table>
+<br />
+<a href="/Personel/PersonelEkle" class="btn btn-info">Personel ekle</a>
+<br />
+
