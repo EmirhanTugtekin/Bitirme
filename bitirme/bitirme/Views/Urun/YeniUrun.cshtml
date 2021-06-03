@@ -7,7 +7,7 @@
 <br />
 <h2>Yeni Ürun Sayfası</h2>
 <br />
-@using (Html.BeginForm("UrunEkle", "Urun", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("YeniUrun", "Urun", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 <form class="form-group" method="post">
     @Html.LabelFor(x => x.UrunAd, "Ürün Adı:")
